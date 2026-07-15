@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Sistema</title>
+    <!-- Font Awesome (ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chart.js (gráficos) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Temas e responsivo -->
+    <link rel="stylesheet" href="css/tema.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fas fa-store"></i>
+            <span>MeuSistema</span>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-chart-pie"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-boxes"></i> Estoque</a></li>
+                <li><a href="#"><i class="fas fa-cube"></i> Produtos</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Vendas</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-usd"></i> Fiados</a></li>
+                <li><a href="#"><i class="fas fa-coins"></i> Financeiro</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Relatórios</a></li>
+                <li><a href="#"><i class="fas fa-database"></i> Backup</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="toggleTheme"><i class="fas fa-moon"></i> Tema</button>
+        </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button id="menuToggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <span class="date-display" id="currentDate"></span>
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=0D6EFD&color=fff&size=40" alt="User">
+                    <span>Administrador</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Cards de KPIs -->
+        <section class="kpi-cards">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="card-info">
+                    <h3>Vendas Totais</h3>
+                    <p class="value">R$ 48.590,00</p>
+                    <span class="trend up"><i class="fas fa-arrow-up"></i> +12,5%</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <div class="card-info">
+                    <h3>Clientes</h3>
+                    <p class="value">1.284</p>
+                    <span class="trend up"><i class="fas fa-arrow-up"></i> +8,2%</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-box"></i></div>
+                <div class="card-info">
+                    <h3>Estoque</h3>
+                    <p class="value">342 itens</p>
+                    <span class="trend down"><i class="fas fa-arrow-down"></i> -3,1%</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="card-info">
+                    <h3>Lucro Líquido</h3>
+                    <p class="value">R$ 12.340,00</p>
+                    <span class="trend up"><i class="fas fa-arrow-up"></i> +5,8%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gráficos -->
+        <section class="charts-row">
+            <div class="chart-card">
+                <h3>Vendas Mensais</h3>
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Vendas por Categoria</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Tabela de últimas vendas -->
+        <section class="table-section">
+            <div class="table-header">
+                <h3>Últimas Vendas</h3>
+                <a href="#" class="btn-outline">Ver todas</a>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>Maria Souza</td>
+                        <td>Notebook Dell</td>
+                        <td>R$ 3.200,00</td>
+                        <td>12/07/2026</td>
+                        <td><span class="status paid">Pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>João Pereira</td>
+                        <td>Monitor LG</td>
+                        <td>R$ 980,00</td>
+                        <td>12/07/2026</td>
+                        <td><span class="status pending">Pendente</span></td>
+                    </tr>
+                    <tr>
+                        <td>#003</td>
+                        <td>Ana Clara</td>
+                        <td>Teclado Mecânico</td>
+                        <td>R$ 450,00</td>
+                        <td>11/07/2026</td>
+                        <td><span class="status paid">Pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>#004</td>
+                        <td>Carlos Silva</td>
+                        <td>Mouse Gamer</td>
+                        <td>R$ 280,00</td>
+                        <td>11/07/2026</td>
+                        <td><span class="status canceled">Cancelado</span></td>
+                    </tr>
+                    <tr>
+                        <td>#005</td>
+                        <td>Fernanda Lima</td>
+                        <td>Fone Bluetooth</td>
+                        <td>R$ 190,00</td>
+                        <td>10/07/2026</td>
+                        <td><span class="status paid">Pago</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Rodapé -->
+        <footer class="footer">
+            <p>&copy; 2026 MeuSistema - Todos os direitos reservados.</p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/estoque.js"></script>
+    <script src="js/produtos.js"></script>
+    <script src="js/clientes.js"></script>
+    <script src="js/vendas.js"></script>
+    <script src="js/fiados.js"></script>
+    <script src="js/financeiro.js"></script>
+    <script src="js/relatorios.js"></script>
+    <script src="js/backup.js"></script>
+</body>
+</html>
